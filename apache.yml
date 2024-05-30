@@ -1,0 +1,27 @@
+---
+- name: Install apache and start apache
+  hosts: web
+  become: yes # true # TRUE
+  
+  
+  tasks:
+    - name: Install apache
+      dnf:
+        name: httpd
+        state: present
+    - name: Start the apache
+      service:
+        name: httpd
+        state: started
+    - name: Enabled teh apache, post reboot will be started
+      service:
+        name: httpd
+        enabled: false # yes # on
+    - name: Deploy a static page
+      copy:
+        src: /home/ec2-user/learning/index.html
+        dest: /var/www/html/
+    - name: Start the apache
+      service:
+        name: httpd
+        state: restarted
