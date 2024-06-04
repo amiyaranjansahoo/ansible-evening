@@ -1,0 +1,19 @@
+- name: Playbook for gathering the facts
+  hosts: web # web[1]points ot second target from inventory file
+  become: yes
+
+  tasks:
+        
+    - name: gathering the details for the remote node
+      debug:
+        var: ansible_facts.distribution_major_version # 2023
+    - name: Install apache using dnf in the server if the distribution is 2023 
+      dnf:
+        name: httpd
+        state: absent
+      when: ansible_facts.distribution_major_version == "2023"
+    - name: Install apache using yum in the server if the distribution is 2 
+      yum:
+        name: httpd
+        state: absent
+      when: ansible_facts.distribution_major_version == "2"

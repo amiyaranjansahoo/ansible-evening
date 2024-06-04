@@ -3,7 +3,8 @@
   hosts: web
   become: yes # true # TRUE
   
-
+  vars:
+    LISTEN_PORT: 9090
   tasks:
     - name: Install apache
       dnf:
