@@ -3,10 +3,6 @@
   hosts: web
   become: yes # true # TRUE
   
-  vars:
-    LISTEN_PORT: 80 
-    source_path: /home/ec2-user/learning/index.html
-    dest_path: /var/www/html/
 
   tasks:
     - name: Install apache
