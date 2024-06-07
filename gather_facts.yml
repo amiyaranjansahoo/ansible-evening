@@ -1,9 +1,0 @@
-- name: Playbook for gathering the facts
-  hosts: all # in case want to execute for all target nodes
-  become: yes
-  gather_facts: yes
-  
-  tasks:
-    - name: gathering the details for the remote node
-      debug:
-        var: ansible_facts # reserverd word
