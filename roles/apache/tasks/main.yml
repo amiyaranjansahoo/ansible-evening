@@ -1,0 +1,10 @@
+---
+# tasks file for apache
+- name: Install apache
+  dnf:
+    name: "{{ package }}"
+    state: present
+- name: Start the apache
+  service:
+    name: "{{ package }}"
+    state: started

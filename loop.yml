@@ -1,0 +1,23 @@
+- name: Install the packages in a loop
+  hosts: web
+  become: yes
+  
+  tasks:
+    - name: Loop demo for AMI 2023
+      dnf:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - httpd
+        - zip
+        - docker
+      when: ansible_facts.distribution_major_version == "2023" 
+    - name: Loop demo for AMI 2
+      yum:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - httpd
+        - zip
+        - docker
+      when: ansible_facts.distribution_major_version == "2"  

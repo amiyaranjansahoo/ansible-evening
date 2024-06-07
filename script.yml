@@ -1,0 +1,7 @@
+- name: script module demo
+  hosts: web
+    #become: yes
+  
+  tasks: 
+    - name: script module demo
+      script: /home/ec2-user/learning/myscript.sh 

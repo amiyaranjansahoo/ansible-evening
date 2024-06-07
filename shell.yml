@@ -1,0 +1,11 @@
+- name: command module demo
+  hosts: web
+  become: yes
+  
+  tasks: 
+    - name: command module demo
+      shell: uptime | awk -F" " '{print $3}'
+      register: result
+    - name: Display the information stored in result
+      debug:
+        var: result.stdout

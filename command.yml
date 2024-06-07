@@ -1,0 +1,11 @@
+- name: command module demo
+  hosts: web
+  become: yes
+  
+  tasks: 
+    - name: command module demo
+      command: uptime
+      register: result
+    - name: Display the information stored in result
+      debug:
+        var: result.stdout
