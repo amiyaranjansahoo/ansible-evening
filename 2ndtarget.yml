@@ -1,8 +1,0 @@
-- name: Playbook for gathering the facts
-  hosts: web[1] # web[1]points ot second target from inventory file
-  become: yes
-
-  tasks:
-    - name: gathering the details for the remote node
-      debug: 
-        var: ansible_facts
